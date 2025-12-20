@@ -2,7 +2,12 @@ import path from "node:path";
 import Docker from "dockerode";
 
 export const IS_CLOUD = process.env.IS_CLOUD === "true";
-export const docker = new Docker({ version: "v1.44" });
+
+// Docker API v1.44 corresponds to Docker v25 (released early 2024)
+// Docker v29+ (Nov 2025) requires minimum API v1.44
+// Allow override via environment variable for compatibility with older Docker versions
+const DOCKER_API_VERSION = process.env.DOCKER_API_VERSION || "v1.44";
+export const docker = new Docker({ version: DOCKER_API_VERSION });
 
 export const paths = (isServer = false) => {
 	const BASE_PATH =
