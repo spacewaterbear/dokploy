@@ -2,7 +2,7 @@ import path from "node:path";
 import Docker from "dockerode";
 
 export const IS_CLOUD = process.env.IS_CLOUD === "true";
-export const docker = new Docker();
+export const docker = new Docker({ version: "v1.44" });
 
 export const paths = (isServer = false) => {
 	const BASE_PATH =

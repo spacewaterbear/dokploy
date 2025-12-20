@@ -11,6 +11,7 @@ export const getRemoteDocker = async (serverId?: string | null) => {
 		port: server.port,
 		username: server.username,
 		protocol: "ssh",
+		version: "v1.44",
 		// @ts-ignore
 		sshOptions: {
 			privateKey: server.sshKey?.privateKey,
